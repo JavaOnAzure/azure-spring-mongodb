@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Lista de Receitas</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:panel header="Lista de Receitas">
+            <p:fieldset>
+
+                <h:panelGrid columns="3">
+                    <p:outputLabel id="consulta" value="Consulta:"/>
+                    <p:inputText value="#{receitaController.consulta}"/>
+                    <p:commandButton value="Filtrar" update="@form"/>
+                </h:panelGrid>
+                <p:dataTable value="#{receitaController.find()}" var="r" emptyMessage="Nenhuma Receita encontrada.">
+                    <p:column headerText="Nome">
+                        <h:outputText value="#{r.nome}"/>
+                    </p:column>
+                    <p:column headerText="Autor">
+                        <h:outputText value="#{r.autor}"/>
+                    </p:column>
+                    <p:column>
+                        <p:commandButton icon="ui-icon-pencil" action="#{receitaController.editar(r)}"/>
+                        <p:commandButton icon="ui-icon-trash" action="#{receitaController.excluir(r)}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:fieldset>
+            <p:commandButton value="Nova Receita" action="#{receitaController.novo()}"/>
+        </p:panel>
+    </h:form>
+</h:body>
+
+</html>

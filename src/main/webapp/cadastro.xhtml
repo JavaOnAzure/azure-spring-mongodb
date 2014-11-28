@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html
+        PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Cadastro de Receita</title>
+</h:head>
+
+<h:body>
+    <h:form>
+        <p:panel header="Cadastro de Receita">
+            <h:panelGrid columns="3">
+                <p:outputLabel for="nome" value="Nome"/>
+                <p:inputText id="nome" value="#{receitaController.receita.nome}"/>
+                <p:message for="nome"/>
+
+                <p:outputLabel for="autor" value="Autor"/>
+                <p:inputText id="autor" value="#{receitaController.receita.autor}"/>
+                <p:message for="autor"/>
+
+                <p:outputLabel for="descricao" value="Descrição"/>
+                <p:editor id="descricao" value="#{receitaController.receita.descricao}"/>
+            </h:panelGrid>
+            <h:panelGrid columns="2">
+                <p:commandButton value="Salvar" action="#{receitaController.salvar()}"/>
+                <p:commandButton value="Cancelar" action="lista"/>
+            </h:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+
+</html>
